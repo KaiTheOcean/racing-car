@@ -1,3 +1,4 @@
+from xml.sax.handler import all_properties
 import pygame
 from pygame.locals import *
 import sys
@@ -5,6 +6,7 @@ import player
 import cop
 import collision
 import enemy
+import time
 
 # Set the pygame window size
 pygame.init()
@@ -31,7 +33,10 @@ background_image = pygame.transform.scale(background_image, (width, height))
 enemies = pygame.sprite.Group()
 enemies.add(cop)
 
-
+# Add all sprites in one group
+all_sprites = pygame.sprite.Group()
+all_sprites.add(player)
+all_sprites.add(cop)
 
 i = 0
 # Run the game
@@ -39,19 +44,25 @@ running = True
 while running: 
     screen_window.blit(background_image, (i, 0)) # Display background picture
     screen_window.blit(background_image, (width+i, 0)) # Redisplay the background picture
-    if (i == -width):
+
+    for sprite in all_sprites: # Loop the all sprites group, and display them as well as their actions
+        screen_window.blit(sprite.image, sprite.rect)
+        sprite.move()
+
+
+    if (i == -width): # Loop the background image
         screen_window.blit(background_image, (width+i, 0))
         i = 0
     i -= 1
-    screen_window.blit(player.image, player.rect) # Display player car
-    screen_window.blit(cop.image, cop.rect) # Display cop car
-    player.control_player()
-    cop.move()
-    pygame.display.flip()
+
+    if pygame.sprite.spritecollide(player, enemies, False):
+        screen_window.fill("#FA8072")
+        screen_window.blit(player.gameOver, (80, 150))
+        pygame.display.update()
+        time.sleep(5)
+
     for event in pygame.event.get(): 
         if event.type == pygame.QUIT:
             running = False
 
-    if pygame.sprite.spritecollide(player, enemies, False):
-        print(11)
     pygame.display.update()
