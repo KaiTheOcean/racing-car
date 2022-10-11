@@ -2,13 +2,13 @@ import pygame
 import sys 
 from pygame import *
 
-class Player(pygame.sprite.Sprite):
+class Enemy(pygame.sprite.Sprite):
 
     def __init__(self):
         '''Set the player positoin'''
         super().__init__() #  调用父类__init__方法初始化对象
         self.image = image.load("images/player.png")
-        self.rect = self.image.get_rect(top=120, bottom=230, left=10, right=700)
+        self.rect = self.image.get_rect(top=120, bottom=230, left=760, right=700)
     
     def control_player(self):
         '''Move the car by player'''

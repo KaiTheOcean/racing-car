@@ -3,7 +3,8 @@ from pygame.locals import *
 import sys
 import player
 import cop
-import background
+import collision
+import enemy
 
 # Set the pygame window size
 pygame.init()
@@ -26,12 +27,18 @@ cop = cop.Cop()
 background_image = pygame.image.load("images/road.png")
 background_image = pygame.transform.scale(background_image, (width, height))
 
+# Define enemies sprite group 
+enemies = pygame.sprite.Group()
+enemies.add(cop)
+
+
+
 i = 0
 # Run the game
 running = True 
 while running: 
     screen_window.blit(background_image, (i, 0)) # Display background picture
-    screen_window.blit(background_image, (width+1, 0))
+    screen_window.blit(background_image, (width+i, 0)) # Redisplay the background picture
     if (i == -width):
         screen_window.blit(background_image, (width+i, 0))
         i = 0
@@ -44,4 +51,7 @@ while running:
     for event in pygame.event.get(): 
         if event.type == pygame.QUIT:
             running = False
+
+    if pygame.sprite.spritecollide(player, enemies, False):
+        print(11)
     pygame.display.update()
