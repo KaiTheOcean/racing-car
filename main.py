@@ -8,7 +8,7 @@ import collision
 import enemy
 import time
 
-# Set the pygame window size
+# Set the pygame window size and initial the pygame window
 pygame.init()
 width = 1000
 height = 400
