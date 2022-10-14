@@ -6,7 +6,7 @@ Within this simple, the user can control the car (using up, down, left, and righ
 
 This program will help you to learn how to use classes, and pygame to make a simple game. 
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/hQNpvlRIZ-k)
 
 # Development Environment
 
