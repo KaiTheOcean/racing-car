@@ -3,7 +3,6 @@ from pygame.locals import *
 from car import Car
 from enemyCar import EnemyCar
 from road import Road
-# from collision import Collision
 
 class MainGame():
     window = None
@@ -12,7 +11,7 @@ class MainGame():
     my_car = Car(800, 230, "images/player.png", width, height, 4)
     background = Road("images/road.png")
     enemyCars = EnemyCar(width)
-    # collision = Collision()
+
 
     def __init__(self):
         pass
@@ -37,7 +36,6 @@ class MainGame():
             MainGame.enemyCars.move()
             MainGame.my_car.displayCar(MainGame.window) # Display the car
             MainGame.my_car.move() # Call the move method from Car class
-            # MainGame.collision.collision(MainGame.window)
             pygame.display.update()
             
         

@@ -28,6 +28,5 @@ class Car():
             if self.rect.left + self.rect.height < self.screen_width:
                 self.rect.move_ip(self.speed ,0) # Car can't go over the right of the screen
             
-
     def displayCar(self, window):
         window.blit(self.image, self.rect)

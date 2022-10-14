@@ -23,6 +23,7 @@ Below are some useful website for the game development.
 
 # Future Work
 
+* Add car collision
 * No enemy cars will overlapping each other
 * Different levels of difficulties
 * Award items for user to pick up
